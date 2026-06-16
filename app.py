@@ -1,3 +1,5 @@
+
+
 """
 FinML Studio — Financial Analysis, DCF & Monte Carlo Platform
 =============================================================
@@ -6,9 +8,9 @@ FinML Studio — Financial Analysis, DCF & Monte Carlo Platform
   • DCF-оценки с Monte Carlo симуляцией (10 000 путей)
   • ML-прогнозирования выручки (LR / RF + TimeSeriesSplit)
   • Сценарного анализа с Tornado Chart и Sensitivity Table
-
 Стек: Python 3.11 | Streamlit | Pandas | NumPy | Plotly | Scikit-Learn | OpenPyXL
 """
+
 
 import io
 import warnings
