@@ -1,5 +1,3 @@
-
-
 """
 FinML Studio — Financial Analysis, DCF & Monte Carlo Platform
 =============================================================
@@ -8,9 +6,9 @@ FinML Studio — Financial Analysis, DCF & Monte Carlo Platform
   • DCF-оценки с Monte Carlo симуляцией (10 000 путей)
   • ML-прогнозирования выручки (LR / RF + TimeSeriesSplit)
   • Сценарного анализа с Tornado Chart и Sensitivity Table
+
 Стек: Python 3.11 | Streamlit | Pandas | NumPy | Plotly | Scikit-Learn | OpenPyXL
 """
-
 
 import io
 import warnings
@@ -110,8 +108,13 @@ section[data-testid="stSidebar"] label{color:#6b7a99!important;font-size:11px!im
 /* dataframe */
 .stDataFrame{border-radius:8px;overflow:hidden;}
 /* hide streamlit chrome */
-#MainMenu,footer,header{visibility:hidden;}
+#MainMenu,footer{visibility:hidden;}
+header[data-testid="stHeader"]{background:rgba(0,0,0,0)!important;height:2.2rem;}
 div[data-testid="stToolbar"]{display:none;}
+button[data-testid="stSidebarCollapseButton"], button[kind="header"]{
+  visibility:visible!important;display:flex!important;opacity:1!important;}
+section[data-testid="stSidebar"][aria-expanded="false"]{margin-left:0!important;}
+
 </style>
 """, unsafe_allow_html=True)
 
@@ -784,7 +787,7 @@ def tab_dcf(df: pd.DataFrame, p: Dict) -> None:
 
     sens_df = pd.DataFrame(sens_rows).set_index("WACC")
     st.dataframe(
-        sens_df.style.map(
+        sens_df.style.applymap(
             lambda v: f"color: {C['green']}" if "x" in str(v) and float(str(v).replace("x","")) > 5
                       else (f"color: {C['red']}" if "x" in str(v) and float(str(v).replace("x","")) < 2 else "")
         ),
